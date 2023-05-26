@@ -7,8 +7,8 @@ class Post(models.Model):
 		('draft', 'Draft'),
 		('published', 'Published'),
 		)
-	title = models.CharField(max_lenght=250)
-	slug = models.SlugField(max_lenght=250, unique_for_date='publish')
+	title = models.CharField(max_length=250)
+	slug = models.SlugField(max_length=250, unique_for_date='publish')
 	author = models.ForeignKey(User, 
 								on_delete=models.CASCADE,
 								related_name='blog_posts')
@@ -16,7 +16,7 @@ class Post(models.Model):
 	publish = models.DateTimeField(default=timezone.now)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
-	status = models.CharField(max_lenght=10,
+	status = models.CharField(max_length=10,
 								choices=STAUTS_CHOICES,
 								default='draft')
 
