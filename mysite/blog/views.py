@@ -44,19 +44,21 @@ def post_share(request, post_id):
 	if request.method == 'POST':
 		#Formularz został wysłany.
 		form = EmailPostForm(request.POST)
-		if form.is_valid()
+		if form.is_valid():
 			#Weryfikacja pól formularza zakończyła się powodzeniem...
 			cd = form.cleaned_data
 			#...więc można wysłać wiadomośc e-mail.
 			post_url = request.build_absolute_uri(post.get_absolute_url())
 			subject = '{} ({}) zachęca do przeczytania "{}"'.format(cd['name'],
 				cd['email'], post.title)
-			message = 'Przeczytaj post "{}" na stronie {}\n\n Komentarz dodany\
-			przez {}: {}'.format(post.title, post_url, cd['name'], cd['comments'])
+			message = 'Przeczytaj post "{}" na stronie {}\n\n Komentarz dodany'\
+					  'przez {}: {}'.format(post.title, post_url, \
+					  						cd['name'], cd['comments'])
+
 			send_mail(subject, message, 'admin@myblog.com', [cd['to']])
 			sent=True
-		else:
-			form = EmailPostForm()
-		return render(request, 'blog/post/share.html', {'post': post,
-														'form': form}
-														'sent': sent)
+	else:
+		form = EmailPostForm()
+	return render(request, 'blog/post/share.html', {'post': post,
+													'form': form,
+													'sent': sent})
