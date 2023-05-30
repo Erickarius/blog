@@ -36,7 +36,7 @@ def post_detail(request, year, month, day, post):
 								   publish__day=day)
 
 	#Lista aktywnych komentarzy dla danego posta.
-	comment = post.comments.filter(active=True)
+	comments = post.comments.filter(active=True)
 
 	if request.method == 'POST':
 		#Komentarz został opublikowany
