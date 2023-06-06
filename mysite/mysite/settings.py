@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,9 @@ EMAIL_HOST_PASSWORD = 'alchpgjrmycrzdma'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_ROOT = 'C:/Projects/blog/mysite/blog/static'
+
+
+
